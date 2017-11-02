@@ -5,5 +5,4 @@ Bootstrap app in laravel
 ## app will contain following: 
 
 - 
-### zmena readme.md v test-branch-01
-### zmena readme.md v test-branch-01 #2
+### zmena readme.md v test-branch-02
