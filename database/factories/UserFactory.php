@@ -12,7 +12,6 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
@@ -23,3 +22,29 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\Mpociot\Teamwork\Teamwork::class, function (Faker $faker) {
+
+    return [
+        'owner_id' => '6',
+        'name' => 'Devs',
+    ];
+});
+
+$factory->define(\Spatie\Permission\Models\Permission::class, function (Faker $faker) {
+
+    return [
+        'name' => 'users.all',
+        'guard_name' => 'web'
+    ];
+});
+
+$factory->define(\Spatie\Permission\Models\Role::class, function (Faker $faker) {
+
+    return [
+        'name' => $faker->name,
+    ];
+});
+
+
+
