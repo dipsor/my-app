@@ -10,9 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::impersonate();
 
 Route::get('/', 'HomeController@index');
-Route::resource( 'users', 'UserController' );
+Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function () {
+    // Users
+    Route::group(['prefix' => 'users', 'namespace' => 'Users'], function () {
+        Route::get('/', 'UsersController@index')->name('users.index');
+    });
+
+});
 
 Auth::routes();
 

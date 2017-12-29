@@ -12,7 +12,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Users\Models\User::class, function (Faker $faker) {
     static $password;
 
     return [
@@ -23,10 +23,10 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(\Mpociot\Teamwork\Teamwork::class, function (Faker $faker) {
+$factory->define(\App\Users\Team::class, function (Faker $faker) {
 
     return [
-        'owner_id' => '6',
+        'owner_id' => '1',
         'name' => 'Devs',
     ];
 });
