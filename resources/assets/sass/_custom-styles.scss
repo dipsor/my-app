@@ -1,0 +1,29 @@
+$base-bg-color: #263238;
+$avatar-area-bg-color: #b0bec5;
+$btn-bg-color: #ff3d00;
+$border-color: #fff;
+
+footer.page-footer.base-nav-bg-color {
+  z-index: 1;
+}
+
+.base-nav-bg-color {
+  background-color: $base-bg-color;
+}
+
+.user-details {
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.avatar-area {
+  background-color: $base-bg-color;
+}
+
+.btn {
+  background-color: $btn-bg-color !important;
+}
+
+.side-nav li > a {
+  color: white;
+}
