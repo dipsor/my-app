@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mpociot\Teamwork\TeamworkTeam;
-
+use App\Users\Team;
 class TeamsSeeder extends Seeder
 {
     /**
@@ -12,7 +11,7 @@ class TeamsSeeder extends Seeder
      */
     public function run()
     {
-        factory(Teamwork::class)->create([
+        factory(Team::class)->create([
             'owner_id' => 1,
             'name' => 'Devs Team',
         ]);

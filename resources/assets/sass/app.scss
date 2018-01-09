@@ -1,10 +1,15 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import "~materialize-css/sass/components/color";
 
 // Variables
-@import "variables";
+//@import "variables";
 @import "home/main";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+// MaterializeCss
+@import "~materialize-css/sass/materialize";
+
+@import "admin_style";
+
+@import "custom-styles";

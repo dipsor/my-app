@@ -163,14 +163,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-        Mpociot\Teamwork\TeamworkServiceProvider::class,
-
-
 
         /*
          * Package Service Providers...
          */
+        Spatie\Permission\PermissionServiceProvider::class,
+        Mpociot\Teamwork\TeamworkServiceProvider::class,
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
+        Lord\Laroute\LarouteServiceProvider::class,
 
         /*
          * Application Service Providers...
