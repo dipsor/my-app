@@ -18,18 +18,18 @@
     <title>Page Blank | Materialize - Material Design Admin Template</title>
 
     <!-- Favicons-->
-    <link rel="icon" href="{{asset('img')}}/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="<?php echo e(asset('img')); ?>/favicon/favicon-32x32.png" sizes="32x32">
     <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="{{asset('img')}}/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon-precomposed" href="<?php echo e(asset('img')); ?>/favicon/apple-touch-icon-152x152.png">
     <!-- For iPhone -->
     <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="{{asset('img')}}/favicon/mstile-144x144.png">
+    <meta name="msapplication-TileImage" content="<?php echo e(asset('img')); ?>/favicon/mstile-144x144.png">
     <!-- For Windows Phone -->
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <!-- CORE CSS-->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -49,6 +49,6 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
 
-    <navigation url-path="{{ url('/') }}" logged-user="{{Auth::user()}}"></navigation>
+    <navigation url-path="<?php echo e(url('/')); ?>" logged-user="<?php echo e(Auth::user()); ?>"></navigation>
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->

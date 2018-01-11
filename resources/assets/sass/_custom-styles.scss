@@ -27,3 +27,44 @@ footer.page-footer.base-nav-bg-color {
 .side-nav li > a {
   color: white;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
+div.social-wrap a {
+  padding-right: 45px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 35px 35px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family:"Merriweather Sans", sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+a#facebook {
+  border-color: #2d5073;
+  background-color: #3b5998;
+  background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+a#twitter {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  background-image: url(https://g.twimg.com/Twitter_logo_white.png);
+}
+a#googleplus {
+  border-color: #111;
+  background-color: #222;
+  text-shadow: #333 -1px -1px 0;
+  background-image:url(http://www.iconsdb.com/icons/preview/white/google-plus-xxl.png);
+}
+div.social-wrap a:active {
+  background-color: #222;
+}
+
+.login-row, .facebook-row, .google-row {
+  margin-bottom: 0px;
+}
