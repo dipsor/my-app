@@ -36,6 +36,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('users-list', require('./components/UsersListComponent.vue'));
 Vue.component('users-form', require('./components/UsersFormComponent.vue'));
 Vue.component('left-sidebar', require('./components/LeftSidebarComponent.vue'));
+Vue.component('navigation', require('./components/NavigationComponent.vue'));
 
 const app = new Vue({
 
