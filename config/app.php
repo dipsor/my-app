@@ -171,6 +171,7 @@ return [
         Mpociot\Teamwork\TeamworkServiceProvider::class,
         Lab404\Impersonate\ImpersonateServiceProvider::class,
         Lord\Laroute\LarouteServiceProvider::class,
+        //Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,7 +230,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
     ],
 
 ];

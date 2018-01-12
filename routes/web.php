@@ -21,5 +21,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], func
 
 });
 
+Route::get('login/facebook', 'Auth\FacebookAuthController@redirectToProvider')->name('facebook.login');
+Route::get('login/facebook/callback', 'Auth\FacebookAuthController@handleProviderCallback')->name('facebook.login.callback');
+Route::get('login/google', 'Auth\GoogleAuthController@redirectToProvider')->name('google.login');
+Route::get('login/google/callback', 'Auth\GoogleAuthController@handleProviderCallback')->name('google.login.callback');
 Auth::routes();
 
