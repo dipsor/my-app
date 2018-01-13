@@ -25,5 +25,7 @@ Route::get('login/facebook', 'Auth\FacebookAuthController@redirectToProvider')->
 Route::get('login/facebook/callback', 'Auth\FacebookAuthController@handleProviderCallback')->name('facebook.login.callback');
 Route::get('login/google', 'Auth\GoogleAuthController@redirectToProvider')->name('google.login');
 Route::get('login/google/callback', 'Auth\GoogleAuthController@handleProviderCallback')->name('google.login.callback');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@customLogout')->name('users.logout');
+
 Auth::routes();
 
