@@ -31564,7 +31564,7 @@ $(function () {
   var window_width = $(window).width();
 
   /*Preloader*/
-  $(window).load(function () {
+  $(window).on('load', function () {
     setTimeout(function () {
       $('body').addClass('loaded');
     }, 200);
@@ -31648,7 +31648,7 @@ $(function () {
   // Materialize Parallax
   $('.parallax').parallax();
   // Materialize Modal
-  $('.modal-trigger').leanModal({
+  $('.modal-trigger').modal({
     dismissible: true, // Modal can be dismissed by clicking outside of the modal
     opacity: .5, // Opacity of modal background
     in_duration: 300, // Transition in duration
@@ -31713,42 +31713,50 @@ $(function () {
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 
-  // Perfect Scrollbar
-  $('select').not('.disabled').material_select();
-  var leftnav = $(".page-topbar").height();
-  var leftnavHeight = window.innerHeight - leftnav;
-  $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
-    suppressScrollX: true
-  });
-  var righttnav = $("#chat-out").height();
-  $('.rightside-navigation').height(righttnav).perfectScrollbar({
-    suppressScrollX: true
-  });
+  // // Perfect Scrollbar
+  // $('select').not('.disabled').material_select();
+  //   var leftnav = $(".page-topbar").height();
+  //   var leftnavHeight = window.innerHeight - leftnav;
+  // $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
+  //   suppressScrollX: true
+  // });
+  //   var righttnav = $("#chat-out").height();
+  // $('.rightside-navigation').height(righttnav).perfectScrollbar({
+  //   suppressScrollX: true
+  // });
+  //
+  //
+  // // Fullscreen
+  // function toggleFullScreen() {
+  //   if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+  //     (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+  //     if (document.documentElement.requestFullScreen) {
+  //       document.documentElement.requestFullScreen();
+  //     }
+  //     else if (document.documentElement.mozRequestFullScreen) {
+  //       document.documentElement.mozRequestFullScreen();
+  //     }
+  //     else if (document.documentElement.webkitRequestFullScreen) {
+  //       document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+  //     }
+  //   }
+  //   else {
+  //     if (document.cancelFullScreen) {
+  //       document.cancelFullScreen();
+  //     }
+  //     else if (document.mozCancelFullScreen) {
+  //       document.mozCancelFullScreen();
+  //     }
+  //     else if (document.webkitCancelFullScreen) {
+  //       document.webkitCancelFullScreen();
+  //     }
+  //   }
+  // }
+  //
+  // $('.toggle-fullscreen').click(function() {
+  //   toggleFullScreen();
+  // });
 
-  // Fullscreen
-  function toggleFullScreen() {
-    if (document.fullScreenElement && document.fullScreenElement !== null || !document.mozFullScreen && !document.webkitIsFullScreen) {
-      if (document.documentElement.requestFullScreen) {
-        document.documentElement.requestFullScreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullScreen) {
-        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-      }
-    } else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
-    }
-  }
-
-  $('.toggle-fullscreen').click(function () {
-    toggleFullScreen();
-  });
 
   // Floating-Fixed table of contents (Materialize pushpin)
   if ($('nav').length) {
@@ -31823,10 +31831,6 @@ $(function () {
       height: '200'
     });
   }
-
-  /*
-  * Advanced UI 
-  */
 }); // end of document ready
 
 /***/ }),
@@ -43829,7 +43833,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && 
 
             absolute: false,
             rootUrl: 'http://localhost',
-            routes: [{ "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizationController@authorize" }, { "host": null, "methods": ["POST"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\ApproveAuthorizationController@approve" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\DenyAuthorizationController@deny" }, { "host": null, "methods": ["POST"], "uri": "oauth\/token", "name": null, "action": "\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@forUser" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/tokens\/{token_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy" }, { "host": null, "methods": ["POST"], "uri": "oauth\/token\/refresh", "name": null, "action": "\Laravel\Passport\Http\Controllers\TransientTokenController@refresh" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/clients", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@forUser" }, { "host": null, "methods": ["POST"], "uri": "oauth\/clients", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@store" }, { "host": null, "methods": ["PUT"], "uri": "oauth\/clients\/{client_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@update" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/clients\/{client_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/scopes", "name": null, "action": "\Laravel\Passport\Http\Controllers\ScopeController@all" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/personal-access-tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser" }, { "host": null, "methods": ["POST"], "uri": "oauth\/personal-access-tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@store" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/personal-access-tokens\/{token_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/users", "name": "users.api.index", "action": "AppHttpControllersApiUsersController@index" }, { "host": null, "methods": ["POST"], "uri": "api\/v1\/users", "name": "users.api.store", "action": "AppHttpControllersApiUsersController@store" }, { "host": null, "methods": ["DELETE"], "uri": "api\/v1\/users\/{id}", "name": "users.api.destroy", "action": "AppHttpControllersApiUsersController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/users\/{id}", "name": "users.api.show", "action": "AppHttpControllersApiUsersController@show" }, { "host": null, "methods": ["PUT"], "uri": "api\/v1\/users\/{id}", "name": "users.api.update", "action": "AppHttpControllersApiUsersController@update" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/roles", "name": "roles.api.index", "action": "App\Http\Controllers\Api\RolesController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/teams", "name": "teams.api.index", "action": "App\Http\Controllers\Api\TeamsController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "impersonate\/take\/{id}", "name": "impersonate", "action": "\Lab404\Impersonate\Controllers\ImpersonateController@take" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "impersonate\/leave", "name": "impersonate.leave", "action": "\Lab404\Impersonate\Controllers\ImpersonateController@leave" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "\/", "name": null, "action": "App\Http\Controllers\HomeController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "admin\/users", "name": "users.index", "action": "AppHttpControllersUsersUsersController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/facebook", "name": "facebook.login", "action": "App\Http\Controllers\Auth\FacebookAuthController@redirectToProvider" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/facebook\/callback", "name": "facebook.login.callback", "action": "App\Http\Controllers\Auth\FacebookAuthController@handleProviderCallback" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/google", "name": "google.login", "action": "App\Http\Controllers\Auth\GoogleAuthController@redirectToProvider" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/google\/callback", "name": "google.login.callback", "action": "App\Http\Controllers\Auth\GoogleAuthController@handleProviderCallback" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "logout", "name": "users.logout", "action": "\App\Http\Controllers\Auth\LoginController@customLogout" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login", "name": "login", "action": "App\Http\Controllers\Auth\LoginController@showLoginForm" }, { "host": null, "methods": ["POST"], "uri": "login", "name": null, "action": "App\Http\Controllers\Auth\LoginController@login" }, { "host": null, "methods": ["POST"], "uri": "logout", "name": "logout", "action": "App\Http\Controllers\Auth\LoginController@logout" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "register", "name": "register", "action": "App\Http\Controllers\Auth\RegisterController@showRegistrationForm" }, { "host": null, "methods": ["POST"], "uri": "register", "name": null, "action": "App\Http\Controllers\Auth\RegisterController@register" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "password\/reset", "name": "password.request", "action": "App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm" }, { "host": null, "methods": ["POST"], "uri": "password\/email", "name": "password.email", "action": "App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "password\/reset\/{token}", "name": "password.reset", "action": "App\Http\Controllers\Auth\ResetPasswordController@showResetForm" }, { "host": null, "methods": ["POST"], "uri": "password\/reset", "name": null, "action": "App\Http\Controllers\Auth\ResetPasswordController@reset" }],
+            routes: [{ "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizationController@authorize" }, { "host": null, "methods": ["POST"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\ApproveAuthorizationController@approve" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/authorize", "name": null, "action": "\Laravel\Passport\Http\Controllers\DenyAuthorizationController@deny" }, { "host": null, "methods": ["POST"], "uri": "oauth\/token", "name": null, "action": "\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@forUser" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/tokens\/{token_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy" }, { "host": null, "methods": ["POST"], "uri": "oauth\/token\/refresh", "name": null, "action": "\Laravel\Passport\Http\Controllers\TransientTokenController@refresh" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/clients", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@forUser" }, { "host": null, "methods": ["POST"], "uri": "oauth\/clients", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@store" }, { "host": null, "methods": ["PUT"], "uri": "oauth\/clients\/{client_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@update" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/clients\/{client_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\ClientController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/scopes", "name": null, "action": "\Laravel\Passport\Http\Controllers\ScopeController@all" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "oauth\/personal-access-tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser" }, { "host": null, "methods": ["POST"], "uri": "oauth\/personal-access-tokens", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@store" }, { "host": null, "methods": ["DELETE"], "uri": "oauth\/personal-access-tokens\/{token_id}", "name": null, "action": "\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/users", "name": "users.api.index", "action": "AppHttpControllersApiUsersController@index" }, { "host": null, "methods": ["POST"], "uri": "api\/v1\/users", "name": "users.api.store", "action": "AppHttpControllersApiUsersController@store" }, { "host": null, "methods": ["DELETE"], "uri": "api\/v1\/users\/{id}", "name": "users.api.destroy", "action": "AppHttpControllersApiUsersController@destroy" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/users\/{id}", "name": "users.api.show", "action": "AppHttpControllersApiUsersController@show" }, { "host": null, "methods": ["PUT"], "uri": "api\/v1\/users\/{id}", "name": "users.api.update", "action": "AppHttpControllersApiUsersController@update" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/roles", "name": "roles.api.index", "action": "App\Http\Controllers\Api\RolesController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "api\/v1\/teams", "name": "teams.api.index", "action": "App\Http\Controllers\Api\TeamsController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "impersonate\/take\/{id}", "name": "impersonate", "action": "\Lab404\Impersonate\Controllers\ImpersonateController@take" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "impersonate\/leave", "name": "impersonate.leave", "action": "\Lab404\Impersonate\Controllers\ImpersonateController@leave" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "\/", "name": null, "action": "App\Http\Controllers\HomeController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "admin", "name": "dashboard.index", "action": "App\Http\Controllers\DashboardController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "admin\/users", "name": "users.index", "action": "AppHttpControllersUsersUsersController@index" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/facebook", "name": "facebook.login", "action": "App\Http\Controllers\Auth\FacebookAuthController@redirectToProvider" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/facebook\/callback", "name": "facebook.login.callback", "action": "App\Http\Controllers\Auth\FacebookAuthController@handleProviderCallback" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/google", "name": "google.login", "action": "App\Http\Controllers\Auth\GoogleAuthController@redirectToProvider" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login\/google\/callback", "name": "google.login.callback", "action": "App\Http\Controllers\Auth\GoogleAuthController@handleProviderCallback" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "logout", "name": "users.logout", "action": "\App\Http\Controllers\Auth\LoginController@customLogout" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "login", "name": "login", "action": "App\Http\Controllers\Auth\LoginController@showLoginForm" }, { "host": null, "methods": ["POST"], "uri": "login", "name": null, "action": "App\Http\Controllers\Auth\LoginController@login" }, { "host": null, "methods": ["POST"], "uri": "logout", "name": "logout", "action": "App\Http\Controllers\Auth\LoginController@logout" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "register", "name": "register", "action": "App\Http\Controllers\Auth\RegisterController@showRegistrationForm" }, { "host": null, "methods": ["POST"], "uri": "register", "name": null, "action": "App\Http\Controllers\Auth\RegisterController@register" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "password\/reset", "name": "password.request", "action": "App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm" }, { "host": null, "methods": ["POST"], "uri": "password\/email", "name": "password.email", "action": "App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail" }, { "host": null, "methods": ["GET", "HEAD"], "uri": "password\/reset\/{token}", "name": "password.reset", "action": "App\Http\Controllers\Auth\ResetPasswordController@showResetForm" }, { "host": null, "methods": ["POST"], "uri": "password\/reset", "name": null, "action": "App\Http\Controllers\Auth\ResetPasswordController@reset" }],
             prefix: '',
 
             route: function route(name, parameters, _route) {

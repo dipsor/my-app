@@ -12,9 +12,11 @@
 */
 Route::impersonate();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'LandingPageController@index');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin', 'auth']], function () {
-    // Users
+    Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
     Route::group(['prefix' => 'users', 'namespace' => 'Users'], function () {
         Route::get('/', 'UsersController@index')->name('users.index');
     });
