@@ -12,7 +12,7 @@ $(function() {
   var window_width = $(window).width();
 
   /*Preloader*/
-  $(window).load(function() {
+  $(window).on('load', function() {
     setTimeout(function() {
       $('body').addClass('loaded');      
     }, 200);
@@ -102,7 +102,7 @@ $(function() {
   // Materialize Parallax
   $('.parallax').parallax();
   // Materialize Modal
-  $('.modal-trigger').leanModal({
+  $('.modal-trigger').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
@@ -168,49 +168,49 @@ $(function() {
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
   
-  // Perfect Scrollbar
-  $('select').not('.disabled').material_select();
-    var leftnav = $(".page-topbar").height();  
-    var leftnavHeight = window.innerHeight - leftnav;
-  $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
-    suppressScrollX: true
-  });
-    var righttnav = $("#chat-out").height();
-  $('.rightside-navigation').height(righttnav).perfectScrollbar({
-    suppressScrollX: true
-  }); 
-  
-  
-  // Fullscreen
-  function toggleFullScreen() {
-    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-      (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-      if (document.documentElement.requestFullScreen) {
-        document.documentElement.requestFullScreen();
-      }
-      else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      }
-      else if (document.documentElement.webkitRequestFullScreen) {
-        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-      }
-    }
-    else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      }
-      else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      }
-      else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
-    }
-  }
-
-  $('.toggle-fullscreen').click(function() {
-    toggleFullScreen();
-  });
+  // // Perfect Scrollbar
+  // $('select').not('.disabled').material_select();
+  //   var leftnav = $(".page-topbar").height();
+  //   var leftnavHeight = window.innerHeight - leftnav;
+  // $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
+  //   suppressScrollX: true
+  // });
+  //   var righttnav = $("#chat-out").height();
+  // $('.rightside-navigation').height(righttnav).perfectScrollbar({
+  //   suppressScrollX: true
+  // });
+  //
+  //
+  // // Fullscreen
+  // function toggleFullScreen() {
+  //   if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+  //     (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+  //     if (document.documentElement.requestFullScreen) {
+  //       document.documentElement.requestFullScreen();
+  //     }
+  //     else if (document.documentElement.mozRequestFullScreen) {
+  //       document.documentElement.mozRequestFullScreen();
+  //     }
+  //     else if (document.documentElement.webkitRequestFullScreen) {
+  //       document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+  //     }
+  //   }
+  //   else {
+  //     if (document.cancelFullScreen) {
+  //       document.cancelFullScreen();
+  //     }
+  //     else if (document.mozCancelFullScreen) {
+  //       document.mozCancelFullScreen();
+  //     }
+  //     else if (document.webkitCancelFullScreen) {
+  //       document.webkitCancelFullScreen();
+  //     }
+  //   }
+  // }
+  //
+  // $('.toggle-fullscreen').click(function() {
+  //   toggleFullScreen();
+  // });
 
 
   // Floating-Fixed table of contents (Materialize pushpin)
@@ -292,15 +292,4 @@ $(function() {
       height: '200'
     });
   }
-  
-  /*
-  * Advanced UI 
-  */
-  
-  
-         
-    
-
-
-
 }); // end of document ready

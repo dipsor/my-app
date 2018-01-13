@@ -7,6 +7,4 @@
                 <users-list :user-id="{{Auth::user()->id}}"></users-list>
             </div>
         </div>
-
-
 @endsection()
