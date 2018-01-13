@@ -10,15 +10,11 @@
                     </ul>
 
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">{{parsedLoggedUser.name}}'s Actions
-                        </a>
+                        <li>
+                            <a href="#" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">{{parsedLoggedUser.name}}
+                            </a>
                         </li>
-
-                    </ul>
-                    <!-- notifications-dropdown -->
-                    <ul id="notifications-dropdown" class="dropdown-content">
                         <li><a @click="logout" class="users-actions" href="#">Log Out</a></li>
-                        <li><a class="users-actions" href="#">Profile</a></li>
                     </ul>
                 </div>
             </nav>
@@ -37,7 +33,7 @@
         data() {
             return {
                 parsedLoggedUser: null,
-                isImpersonated: false
+                isImpersonated: false,
             }
         },
 
@@ -53,13 +49,12 @@
 
         methods: {
             logout(){
-                axios.post(this.$laroute.route('logout'))
-                .then((response) =>{
-                    console.log(response);
-                    //window.location.href = this.$laroute.route('login');
-                }, (error) => {
-                    console.log(error);
-                });
+                axios.get(this.$laroute.route('users.logout'))
+                    .then((response) =>{
+                        window.location.href = this.$laroute.route('login');
+                    }, (error) => {
+                        console.log(error);
+                    });
             }
         }
     }
