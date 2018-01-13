@@ -33,7 +33,7 @@ class GoogleAuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect(route('users.index'));
+        return redirect(route('dashboard.index'));
     }
 
     private function findOrCreateUser($user)
