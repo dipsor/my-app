@@ -51,7 +51,7 @@
             logout(){
                 axios.get(this.$laroute.route('users.logout'))
                     .then((response) =>{
-                        window.location.href = this.$laroute.route('login');
+                        window.location.href = this.$laroute.route('home');
                     }, (error) => {
                         console.log(error);
                     });

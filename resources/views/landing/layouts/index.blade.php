@@ -19,8 +19,14 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo black-text">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="black-text" href="#">Sign In</a></li>
-                <li><a class="black-text" href="#">Sign Up</a></li>
+                @if(Auth::user())
+                    <li><a class="black-text" href="{{route('users.show', ['id' => Auth::user()->id])}}">Profile</a></li>
+                    <li><a class="black-text" href="{{route('users.logout')}}">Logout</a></li>
+
+                @else
+                <li><a class="black-text" href="{{route('login')}}">Sign In</a></li>
+                <li><a class="black-text" href="{{route('login')}}">Sign Up</a></li>
+                @endif
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
@@ -33,7 +39,10 @@
 
     <div id="index-banner">
         <div>
-            <div class="gradient-45deg-purple-amber">
+            {{--<div class="gradient-45deg-purple-amber">--}}
+                <div class="gradient-45deg-brown-brown">
+                {{--<div class="gradient-45deg-red-pink">--}}
+
                 <br><br>
                 <h1 class="header center white-text text-lighten-2">My app boilerplate</h1>
                 <div class="row center">
@@ -56,7 +65,7 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center purple-text"><i class="material-icons">flash_on</i></h2>
+                        <h2 class="center purple-text text-darken-2"><i class="material-icons">flash_on</i></h2>
                         <h5 class="center">Speeds up development</h5>
 
                         <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
@@ -65,7 +74,7 @@
 
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center purple-text"><i class="material-icons">group</i></h2>
+                        <h2 class="center purple-text text-darken-2"><i class="material-icons">group</i></h2>
                         <h5 class="center">User Experience Focused</h5>
 
                         <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
@@ -74,7 +83,7 @@
 
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center purple-text"><i class="material-icons">settings</i></h2>
+                        <h2 class="center purple-text text-darken-2"><i class="material-icons">settings</i></h2>
                         <h5 class="center">Easy to work with</h5>
 
                         <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
@@ -120,7 +129,7 @@
         </div>
         <div class="parallax"><img src="{{asset('img')}}/background3.jpg" alt="Unsplashed background img 3"></div>
     </div>
-    <footer class="page-footer purple lighten-2">
+    <footer class="page-footer brown darken-2">
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">Company Bio</h5>
