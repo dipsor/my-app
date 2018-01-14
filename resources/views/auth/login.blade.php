@@ -1,10 +1,3 @@
-<div
-        class="fb-like"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true">
-</div>
-
 @extends('auth.custom.layouts')
 @section('content')
 <div id="login-page" class="row">
@@ -67,8 +60,11 @@
                     </div>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin medium-small"><a href="{{ route('home') }}">Home</a></p>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
                     <p class="margin medium-small"><a href="{{ route('register') }}">Register Now!</a></p>

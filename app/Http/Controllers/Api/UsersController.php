@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use App\Users\Transformers\UserTransformer;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -113,6 +115,11 @@ class UsersController extends Controller
         return response($user);
     }
 
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return User
+     */
     private function handleRoles(Request $request, User $user)
     {
         $roles = $request->get('roles');
@@ -123,4 +130,57 @@ class UsersController extends Controller
 
         return $user;
     }
+
+    /**
+     * @param Request $request
+     * @param $userId
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function updateGeneralInfo(Request $request, $userId)
+    {
+        $user = User::findOrFail($userId);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $userData = [
+            'name'  =>  $request->get('name'),
+            'email'  => $request->get('email')
+        ];
+
+        $user->update($userData);
+
+        return response('User updated', 200);
+    }
+
+    /**
+     * @param Request $request
+     * @param $userId
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function updatePassword(Request $request, $userId)
+    {
+        $user = User::findOrFail($userId);
+
+        if (!Hash::check($request->get('old'), $user->password)) {
+            return response('wrong password', 403);
+        }
+
+        $this->validate($request, [
+            'old' => 'required',
+            'newPassword' => 'confirmed|min:6',
+        ]);
+
+        $userData = [
+          'password' => $request->get('newPassword')
+        ];
+
+        $user->update($userData);
+
+        return response('Password updated', 200);
+    }
+
+
 }

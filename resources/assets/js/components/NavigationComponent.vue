@@ -41,6 +41,11 @@
             this.eventBus.$on('impersonate-enter', () => {
                 this.isImpersonated = true;
             });
+
+            this.eventBus.$on('user-info-updated', (userName) => {
+                console.log(userName);
+                this.parsedLoggedUser.name = userName;
+            });
         },
 
         created() {
@@ -51,7 +56,7 @@
             logout(){
                 axios.get(this.$laroute.route('users.logout'))
                     .then((response) =>{
-                        window.location.href = this.$laroute.route('login');
+                        window.location.href = this.$laroute.route('home');
                     }, (error) => {
                         console.log(error);
                     });

@@ -9,14 +9,14 @@
                     </div>
                     <div class="col col s8 m8 l8">
                         <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><i class="mdi-navigation-arrow-drop-down right"></i></a>
-                        <p class="user-roal" v-model="loggedUser">
+                        <p v-if="loadUser" class="user-roal" v-model="loggedUser">
                             {{parsedLoggedUser.name}}
                         </p>
                         <a href="#" @click.prevent="leaveImpersonate()">Leave Impersonate</a>
                     </div>
                 </div>
             </li>
-            <li class="bold"><a :href="$laroute.route('users.index')" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Users</a>
+            <li class="bold"><a :href="$laroute.route('admin.users.index')" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Users</a>
             </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
@@ -34,19 +34,35 @@
     export default {
         props: {
             urlPath: '',
-            loggedUser: null
+            loggedUser: null,
         },
 
         data() {
           return {
               parsedLoggedUser: null,
-              isImpersonated: false
+              isImpersonated: false,
+              loadUser: true,
           }
+        },
+        created() {
+            this.loadUser = false;
+
+            this.eventBus.$on('user-info-updated', (userName) => {
+
+            });
+            this.eventBus.$on('impersonate-enter', () => {
+                this.isImpersonated = true;
+            });
         },
 
         mounted() {
-            this.eventBus.$on('impersonate-enter', () => {
-                this.isImpersonated = true;
+            console.log('left nav bar');
+            this.loadUser = true;
+
+            this.eventBus.$on('user-info-updated', (userName) => {
+                console.log(userName);
+                this.parsedLoggedUser.name = userName;
+                this.loadUser = true;
             });
         },
 
