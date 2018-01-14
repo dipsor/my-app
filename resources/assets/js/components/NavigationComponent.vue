@@ -41,6 +41,11 @@
             this.eventBus.$on('impersonate-enter', () => {
                 this.isImpersonated = true;
             });
+
+            this.eventBus.$on('user-info-updated', (userName) => {
+                console.log(userName);
+                this.parsedLoggedUser.name = userName;
+            });
         },
 
         created() {
