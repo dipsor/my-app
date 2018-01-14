@@ -18,9 +18,7 @@
     <meta name="msapplication-TileColor" content="#00bcd4">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
     <!-- For Windows Phone -->
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- CORE CSS-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -39,7 +37,7 @@
         vertical-align: middle;
     }
 </style>
-<body class="blue-grey">
+<body class="brown lighten-3">
 @yield('content')
 <!-- ================================================
   Scripts

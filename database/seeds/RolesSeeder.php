@@ -13,5 +13,6 @@ class RolesSeeder extends Seeder
     public function run()
     {
         factory(Role::class)->create(['name' => 'admin', 'guard_name' => 'web']);
+        factory(Role::class)->create(['name' => 'customer', 'guard_name' => 'web']);
     }
 }

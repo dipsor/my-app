@@ -1,11 +1,3 @@
-<div
-        class="fb-like"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true">
-</div>
-
-
 <?php $__env->startSection('content'); ?>
 <div id="login-page" class="row">
     <div class="col s12 z-depth-4 card-panel">
@@ -68,8 +60,11 @@
                     </div>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin medium-small"><a href="<?php echo e(route('home')); ?>">Home</a></p>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
                     <p class="margin medium-small"><a href="<?php echo e(route('register')); ?>">Register Now!</a></p>

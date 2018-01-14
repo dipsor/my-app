@@ -286,4 +286,6 @@ $(function() {
             overflow: 'auto'
         });
     }
+
+    $('ul.tabs').tabs();
 });

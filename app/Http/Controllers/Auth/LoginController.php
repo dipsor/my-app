@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
 
     public function __construct()
     {
@@ -35,6 +35,6 @@ class LoginController extends Controller
 
     public function customLogout(\Request $request) {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
