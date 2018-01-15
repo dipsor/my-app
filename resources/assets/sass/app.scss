@@ -1,17 +1,5 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-@import "~materialize-css/sass/components/color";
-
-// Variables
-//@import "variables";
-@import "home/main";
-
-// MaterializeCss
-@import "~materialize-css/sass/materialize";
-
-// landing page styles
-@import "landing-page/main";
-
-@import "admin_style";
-
-@import "custom-styles";
+// shared scss
+@import "shared/shared";
+@import "dashboard/admin_style";
+@import "dashboard/home/main";
+@import "dashboard/custom-styles";

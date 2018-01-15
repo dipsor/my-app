@@ -4,7 +4,7 @@
     <!-- START WRAPPER -->
     <div class="wrapper">
         {{--@include('layouts.partials.left-sidebar')--}}
-        <left-sidebar url-path="{{ url('/') }}" logged-user="{{Auth::user()}}"></left-sidebar>
+        <left-sidebar url-path="{{ url('/') }}" logged-user="{{Auth::user()}}" is-admin="{{Auth::user()->hasRole('admin')}}"></left-sidebar>
         <!-- START CONTENT -->
         <section id="content">
 

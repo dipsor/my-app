@@ -4,7 +4,7 @@
     <!-- START WRAPPER -->
     <div class="wrapper">
         
-        <left-sidebar url-path="<?php echo e(url('/')); ?>" logged-user="<?php echo e(Auth::user()); ?>"></left-sidebar>
+        <left-sidebar url-path="<?php echo e(url('/')); ?>" logged-user="<?php echo e(Auth::user()); ?>" is-admin="<?php echo e(Auth::user()->hasRole('admin')); ?>"></left-sidebar>
         <!-- START CONTENT -->
         <section id="content">
 
