@@ -10,6 +10,8 @@
                     </ul>
 
                     <ul class="right hide-on-med-and-down">
+                        <li><a :href="landingPageUrl" class="users-actions">Landing Page</a></li>
+
                         <li>
                             <a href="#" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">{{parsedLoggedUser.name}}
                             </a>
@@ -34,10 +36,13 @@
             return {
                 parsedLoggedUser: null,
                 isImpersonated: false,
+                landingPageUrl: '',
             }
         },
 
         mounted() {
+            this.landingPageUrl = this.$laroute.route('home');
+
             this.eventBus.$on('impersonate-enter', () => {
                 this.isImpersonated = true;
             });

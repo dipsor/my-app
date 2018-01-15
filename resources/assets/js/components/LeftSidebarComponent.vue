@@ -8,15 +8,16 @@
                         <img :src="urlPath+'/img/avatar.jpg'" alt="" class="circle responsive-img valign profile-image">
                     </div>
                     <div class="col col s8 m8 l8">
-                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><i class="mdi-navigation-arrow-drop-down right"></i></a>
                         <p v-if="loadUser" class="user-roal" v-model="loggedUser">
                             {{parsedLoggedUser.name}}
                         </p>
-                        <a href="#" @click.prevent="leaveImpersonate()">Leave Impersonate</a>
+                        <p v-show="isAdmin">
+                            <a href="#" @click.prevent="leaveImpersonate()">Leave Impersonate</a>
+                        </p>
                     </div>
                 </div>
             </li>
-            <li class="bold"><a :href="$laroute.route('admin.users.index')" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Users</a>
+            <li v-show="isAdmin" class="bold"><a :href="$laroute.route('admin.users.index')" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Users</a>
             </li>
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
@@ -35,6 +36,7 @@
         props: {
             urlPath: '',
             loggedUser: null,
+            isAdmin: false,
         },
 
         data() {
@@ -46,7 +48,6 @@
         },
         created() {
             this.loadUser = false;
-
             this.eventBus.$on('user-info-updated', (userName) => {
 
             });
@@ -56,7 +57,8 @@
         },
 
         mounted() {
-            console.log('left nav bar');
+            console.log('is admin?');
+            console.log(this.isAdmin);
             this.loadUser = true;
 
             this.eventBus.$on('user-info-updated', (userName) => {
