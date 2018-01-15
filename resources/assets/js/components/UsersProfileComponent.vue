@@ -93,7 +93,8 @@
                     newPassword: '',
                     newPassword_confirmation: '',
                 },
-                isImpersonated: false
+                isImpersonated: false,
+                isLoading: false,
             }
         },
 
@@ -105,7 +106,13 @@
             });
 
             this.eventBus.$on('user-info-updated', () => {
-                console.log('updated');
+                Materialize.toast('User Updated', 4000);
+                this.isLoading = false;
+            });
+
+            this.eventBus.$on('password-updated', () => {
+                Materialize.toast('Password Updated', 4000);
+                this.isLoading = false;
             });
         },
 
@@ -121,6 +128,8 @@
             },
 
             updateUser() {
+                this.isLoading = true;
+
                 axios.put(this.$laroute.route('users.api.update.general.info',{id: this.userId}), this.user).
                 then((response) => {
                     this.eventBus.$emit('user-info-updated', this.user.name);
@@ -130,9 +139,11 @@
             },
 
             updatePassword() {
+                this.isLoading = true;
+
                 axios.put(this.$laroute.route('users.api.update.password',{id: this.userId}), this.password).
                 then((response) => {
-                    this.eventBus.$emit('password-changed');
+                    this.eventBus.$emit('password-updated');
                 }).catch((error) => {
                     console.log(error);
                 });

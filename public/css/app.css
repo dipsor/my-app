@@ -20758,3 +20758,20 @@ p.user-roal {
   display: table-cell;
 }
 
+.progress {
+  margin-top: -24px;
+  background-color: white;
+}
+
+.custom-loader-wrapper {
+  position: relative;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: inherit;
+  width: 100%;
+}
+
+custom-card-panel {
+  position: relative;
+}
+

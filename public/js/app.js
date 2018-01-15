@@ -47922,7 +47922,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 newPassword: '',
                 newPassword_confirmation: ''
             },
-            isImpersonated: false
+            isImpersonated: false,
+            isLoading: false
         };
     },
 
@@ -47936,7 +47937,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
 
         this.eventBus.$on('user-info-updated', function () {
-            console.log('updated');
+            Materialize.toast('User Updated', 4000);
+            _this.isLoading = false;
+        });
+
+        this.eventBus.$on('password-updated', function () {
+            Materialize.toast('Password Updated', 4000);
+            _this.isLoading = false;
         });
     },
 
@@ -47955,6 +47962,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateUser: function updateUser() {
             var _this3 = this;
 
+            this.isLoading = true;
+
             axios.put(this.$laroute.route('users.api.update.general.info', { id: this.userId }), this.user).then(function (response) {
                 _this3.eventBus.$emit('user-info-updated', _this3.user.name);
             }).catch(function (error) {
@@ -47964,8 +47973,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updatePassword: function updatePassword() {
             var _this4 = this;
 
+            this.isLoading = true;
+
             axios.put(this.$laroute.route('users.api.update.password', { id: this.userId }), this.password).then(function (response) {
-                _this4.eventBus.$emit('password-changed');
+                _this4.eventBus.$emit('password-updated');
             }).catch(function (error) {
                 console.log(error);
             });
