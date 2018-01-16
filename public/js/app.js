@@ -47816,7 +47816,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47827,6 +47827,20 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47922,7 +47936,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 newPassword: '',
                 newPassword_confirmation: ''
             },
-            isImpersonated: false
+            isImpersonated: false,
+            isLoading: false
         };
     },
 
@@ -47936,7 +47951,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
 
         this.eventBus.$on('user-info-updated', function () {
-            console.log('updated');
+            Materialize.toast('User Updated', 4000);
+            _this.isLoading = false;
+        });
+
+        this.eventBus.$on('password-updated', function () {
+            Materialize.toast('Password Updated', 4000);
+            _this.isLoading = false;
         });
     },
 
@@ -47955,18 +47976,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateUser: function updateUser() {
             var _this3 = this;
 
+            this.isLoading = true;
+
             axios.put(this.$laroute.route('users.api.update.general.info', { id: this.userId }), this.user).then(function (response) {
                 _this3.eventBus.$emit('user-info-updated', _this3.user.name);
             }).catch(function (error) {
+                _this3.isLoading = false;
+                Materialize.toast(error, 4000);
                 console.log(error);
             });
         },
         updatePassword: function updatePassword() {
             var _this4 = this;
 
+            this.isLoading = true;
+
             axios.put(this.$laroute.route('users.api.update.password', { id: this.userId }), this.password).then(function (response) {
-                _this4.eventBus.$emit('password-changed');
+                _this4.eventBus.$emit('password-updated');
             }).catch(function (error) {
+                _this4.isLoading = false;
+                Materialize.toast(error, 4000);
+
                 console.log(error);
             });
         }
@@ -47981,231 +48011,262 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _vm._m(0),
+  return _c("div", [
+    _vm.isLoading
+      ? _c("div", { staticClass: "custom-loader-wrapper" }, [_vm._m(0)])
+      : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col s12 custom-tab-content", attrs: { id: "test1" } },
-      [
-        _c("form", { staticClass: "col s12" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.name,
-                    expression: "user.name"
-                  }
-                ],
-                staticClass: "validate",
-                attrs: {
-                  placeholder: "Placeholder",
-                  id: "first_name",
-                  type: "text"
-                },
-                domProps: { value: _vm.user.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+    _c("div", { staticClass: "row" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col s12 custom-tab-content", attrs: { id: "test1" } },
+        [
+          _c("form", { staticClass: "col s12" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.name,
+                      expression: "user.name"
                     }
-                    _vm.$set(_vm.user, "name", $event.target.value)
+                  ],
+                  staticClass: "validate",
+                  attrs: {
+                    placeholder: "Placeholder",
+                    id: "first_name",
+                    type: "text"
+                  },
+                  domProps: { value: _vm.user.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "name", $event.target.value)
+                    }
                   }
-                }
-              }),
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    class: { active: _vm.user.name },
+                    attrs: { for: "first_name" }
+                  },
+                  [_vm._v("First Name")]
+                )
+              ]),
               _vm._v(" "),
-              _c(
-                "label",
-                {
-                  class: { active: _vm.user.name },
-                  attrs: { for: "first_name" }
-                },
-                [_vm._v("First Name")]
-              )
+              _vm._m(2)
             ]),
             _vm._v(" "),
-            _vm._m(1)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s12" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.email,
-                    expression: "user.email"
-                  }
-                ],
-                staticClass: "validate",
-                attrs: { id: "email", type: "email" },
-                domProps: { value: _vm.user.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s12" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.email,
+                      expression: "user.email"
                     }
-                    _vm.$set(_vm.user, "email", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                { class: { active: _vm.user.email }, attrs: { for: "email" } },
-                [_vm._v("Email")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s12" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "waves-effect waves-light btn",
-                  attrs: { href: "#" },
+                  ],
+                  staticClass: "validate",
+                  attrs: { id: "email", type: "email" },
+                  domProps: { value: _vm.user.email },
                   on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.updateUser()
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "email", $event.target.value)
                     }
                   }
-                },
-                [_vm._v("Update User")]
-              )
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    class: { active: _vm.user.email },
+                    attrs: { for: "email" }
+                  },
+                  [_vm._v("Email")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s12" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "waves-effect waves-light btn",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.updateUser()
+                      }
+                    }
+                  },
+                  [_vm._v("Update User")]
+                )
+              ])
             ])
           ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col s12 custom-tab-content", attrs: { id: "test3" } },
-      [
-        _c("form", { staticClass: "col s12" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s12" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.password.old,
-                    expression: "password.old"
-                  }
-                ],
-                staticClass: "validate",
-                attrs: { id: "password", type: "password" },
-                domProps: { value: _vm.password.old },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col s12 custom-tab-content", attrs: { id: "test3" } },
+        [
+          _c("form", { staticClass: "col s12" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s12" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password.old,
+                      expression: "password.old"
                     }
-                    _vm.$set(_vm.password, "old", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "password" } }, [
-                _vm._v("Old Password")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.password.newPassword,
-                    expression: "password.newPassword"
-                  }
-                ],
-                staticClass: "validate",
-                attrs: { id: "new_password", type: "password" },
-                domProps: { value: _vm.password.newPassword },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  ],
+                  staticClass: "validate",
+                  attrs: { id: "password", type: "password" },
+                  domProps: { value: _vm.password.old },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.password, "old", $event.target.value)
                     }
-                    _vm.$set(_vm.password, "newPassword", $event.target.value)
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "new_password" } }, [
-                _vm._v("New Password")
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "password" } }, [
+                  _vm._v("Old Password")
+                ])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "input-field col s6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.password.newPassword_confirmation,
-                    expression: "password.newPassword_confirmation"
-                  }
-                ],
-                staticClass: "validate",
-                attrs: { id: "confirm_new_password", type: "password" },
-                domProps: { value: _vm.password.newPassword_confirmation },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password.newPassword,
+                      expression: "password.newPassword"
                     }
-                    _vm.$set(
-                      _vm.password,
-                      "newPassword_confirmation",
-                      $event.target.value
-                    )
+                  ],
+                  staticClass: "validate",
+                  attrs: { id: "new_password", type: "password" },
+                  domProps: { value: _vm.password.newPassword },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.password, "newPassword", $event.target.value)
+                    }
                   }
-                }
-              }),
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "new_password" } }, [
+                  _vm._v("New Password")
+                ])
+              ]),
               _vm._v(" "),
-              _c("label", { attrs: { for: "confirm_new_password" } }, [
-                _vm._v("Confirm New Password")
+              _c("div", { staticClass: "input-field col s6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password.newPassword_confirmation,
+                      expression: "password.newPassword_confirmation"
+                    }
+                  ],
+                  staticClass: "validate",
+                  attrs: { id: "confirm_new_password", type: "password" },
+                  domProps: { value: _vm.password.newPassword_confirmation },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.password,
+                        "newPassword_confirmation",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "confirm_new_password" } }, [
+                  _vm._v("Confirm New Password")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "input-field col s12" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "waves-effect waves-light btn",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        _vm.updatePassword()
+                      }
+                    }
+                  },
+                  [_vm._v("Change Password")]
+                )
               ])
             ])
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "preloader-wrapper big active custom-loader" },
+      [
+        _c("div", { staticClass: "spinner-layer spinner-blue-only" }, [
+          _c("div", { staticClass: "circle-clipper left" }, [
+            _c("div", { staticClass: "circle" })
           ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "input-field col s12" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "waves-effect waves-light btn",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      _vm.updatePassword()
-                    }
-                  }
-                },
-                [_vm._v("Change Password")]
-              )
-            ])
+          _c("div", { staticClass: "gap-patch" }, [
+            _c("div", { staticClass: "circle" })
+          ]),
+          _c("div", { staticClass: "circle-clipper right" }, [
+            _c("div", { staticClass: "circle" })
           ])
         ])
       ]
     )
-  ])
-}
-var staticRenderFns = [
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

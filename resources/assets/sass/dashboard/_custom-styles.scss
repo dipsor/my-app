@@ -71,3 +71,29 @@ div.social-wrap a:active {
 p.user-roal {
   display: table-cell;
 }
+
+.progress {
+  margin-top: -24px;
+  background-color: white;
+}
+
+.custom-loader {
+  margin: 0px auto;
+}
+
+.custom-loader-wrapper {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0,0,0, 0.5);
+  width: 100%;
+  height:100%;
+  top: 0px;
+  left:0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-card-panel {
+  position: relative;
+}
