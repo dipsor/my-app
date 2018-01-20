@@ -97,3 +97,36 @@ p.user-roal {
 .custom-card-panel {
   position: relative;
 }
+
+.breadcrumbs-wrapper nav {
+  background-color: transparent;
+  box-shadow: none;
+
+  span.breadcrumb {
+    color: black;
+  }
+
+  a {
+    color: black;
+  }
+
+  a.breadcrumb {
+    text-decoration: underline;
+  }
+
+  .breadcrumb:before {
+    content: '>';
+    color: black;
+  }
+
+  .sidebar-link {
+    color: white;
+  }
+}
+
+
+.brand-logo {
+  padding: 0px;
+  padding-left: 20px;
+  line-height: 20px !important;
+}

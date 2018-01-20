@@ -9,7 +9,7 @@
                     </div>
                     <div class="col col s8 m8 l8">
                         <p v-if="loadUser" class="user-roal" v-model="loggedUser">
-                            {{parsedLoggedUser.name}}
+                            <a class="sidebar-link" :href="$laroute.route('users.show', {id: parsedLoggedUser.id})">{{parsedLoggedUser.name}}</a>
                         </p>
                         <p v-show="isAdmin">
                             <a href="#" @click.prevent="leaveImpersonate()">Leave Impersonate</a>
