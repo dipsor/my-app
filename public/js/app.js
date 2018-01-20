@@ -47413,10 +47413,17 @@ var render = function() {
                       }
                     },
                     [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.parsedLoggedUser.name) +
-                          "\n                    "
+                      _c(
+                        "a",
+                        {
+                          staticClass: "sidebar-link",
+                          attrs: {
+                            href: _vm.$laroute.route("users.show", {
+                              id: _vm.parsedLoggedUser.id
+                            })
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.parsedLoggedUser.name))]
                       )
                     ]
                   )
@@ -47591,8 +47598,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -47672,7 +47677,9 @@ var render = function() {
                   staticClass:
                     "waves-effect waves-block waves-light notification-button",
                   attrs: {
-                    href: "#",
+                    href: _vm.$laroute.route("users.show", {
+                      id: _vm.parsedLoggedUser.id
+                    }),
                     "data-activates": "notifications-dropdown"
                   }
                 },
@@ -47707,17 +47714,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "left" }, [
-      _c("li", [
-        _c("h1", { staticClass: "logo-wrapper" }, [
-          _c("a", {
-            staticClass: "brand-logo darken-1",
-            attrs: { href: "index.html" }
-          }),
-          _c("span", { staticClass: "logo-text" }, [_vm._v("Admin")])
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      { staticClass: "brand-logo darken-1", attrs: { href: "index.html" } },
+      [_c("span", { staticClass: "logo-text" }, [_vm._v("Admin Dashboard")])]
+    )
   }
 ]
 render._withStripped = true
