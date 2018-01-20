@@ -5,15 +5,13 @@
         <div class="navbar-fixed">
             <nav class="base-nav-bg-color">
                 <div class="nav-wrapper">
-                    <ul class="left">
-                        <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"></a><span class="logo-text">Admin</span></h1></li>
-                    </ul>
+                    <a href="index.html" class="brand-logo darken-1"><span class="logo-text">Admin Dashboard</span></a>
 
                     <ul class="right hide-on-med-and-down">
                         <li><a :href="landingPageUrl" class="users-actions">Landing Page</a></li>
 
                         <li>
-                            <a href="#" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">{{parsedLoggedUser.name}}
+                            <a :href="$laroute.route('users.show', {id: parsedLoggedUser.id})" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">{{parsedLoggedUser.name}}
                             </a>
                         </li>
                         <li><a @click="logout" class="users-actions" href="#">Log Out</a></li>
